@@ -2,11 +2,12 @@
 Small repo with Dockerfile to build and run:
 https://github.com/1CatAI/1Cat-vLLM
 ## build 
-´´´
+```
 docker build -t 1cat-vllm:v1.5.1 .
-´´´
+```
 
 # run NVFP4
+```
 docker run --gpus all --ipc=host -p 8000:8000 \
   -e PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
   -v /home/xix/Downloads/:/models \
@@ -16,8 +17,10 @@ docker run --gpus all --ipc=host -p 8000:8000 \
   --kv-cache-dtype fp8_e4m3 \
   --gpu-memory-utilization 0.95 \
   --max-model-len 3072
+```
 
 # request 
+```
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
@@ -32,4 +35,4 @@ curl http://localhost:8000/v1/chat/completions \
     "temperature": 0.7,
     "stream": true
   }'
-  
+```
