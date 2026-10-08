@@ -1,12 +1,13 @@
-# Motivation
+# What
 Small repo with Dockerfile to build and run:
 https://github.com/1CatAI/1Cat-vLLM
-## build 
+# How
+## build
 ```
 docker build -t 1cat-vllm:v1.5.1 .
 ```
 
-# run NVFP4
+## run NVFP4
 ```
 docker run --gpus all --ipc=host -p 8000:8000 \
   -e PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
@@ -19,7 +20,7 @@ docker run --gpus all --ipc=host -p 8000:8000 \
   --max-model-len 3072
 ```
 
-# request 
+## request 
 ```
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
